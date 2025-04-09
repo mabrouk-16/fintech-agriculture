@@ -9,9 +9,10 @@ import {
   user,
   UserCredential,
 } from '@angular/fire/auth';
-import { UserService } from './user.service';
 import { SnackService } from '../../../services/snack.service';
 import { logBody, regBody } from '../../../models/User';
+import { FarmerService } from './farmer.service';
+import { RetailerService } from './retailer.service';
 // import { Departments, logBody, regBody, UserRoles } from '../../../models/User';
 
 @Injectable({
@@ -19,42 +20,59 @@ import { logBody, regBody } from '../../../models/User';
 })
 export class FireAuthService {
   private angularAuth = inject(Auth);
-  private userService = inject(UserService);
+  private farmerService = inject(FarmerService);
+  private retailerService = inject(RetailerService);
 
   user$ = user(this.angularAuth);
   currentUser$ = authState(this.angularAuth);
 
-  registerWithFB(body: regBody): Observable<void> {
+  registerFarmerWithFB(body: any): Observable<void> {
     const promise = createUserWithEmailAndPassword(
       this.angularAuth,
       body.email,
       body.password
     ).then((res) => {
-      this.userService.addUserProfile(res.user.uid, {
+      this.farmerService.addFarmerProfile(res.user.uid, {
         userId: res.user.uid,
-        userName: body.userName,
-        email: res.user.email || '',
-        emailVerified: res.user.emailVerified || false,
-        picture: null,
-        birthDate: body.birthDate,
+        fname: body.fname,
+        lname: body.lname,
+        email: body.email,
+        personalID: body.personalID,
         phone: body.phone,
-        gender: body.gender,
-        address: body.address,
-        // role: UserRoles.user,
-        department: body.department,
-        title: body.title,
-        createdAt: new Date().toISOString(),
+        password: body.password,
       });
     });
     return from(promise);
   }
-  loginWithFB(body: logBody): Observable<UserCredential> {
+  registerRetailerWithFB(body: any): Observable<void> {
+    const promise = createUserWithEmailAndPassword(
+      this.angularAuth,
+      body.email,
+      body.password
+    ).then((res) => {
+      this.retailerService.addRetailerProfile(res.user.uid, {
+        userId: res.user.uid,
+        name: body.name,
+        email: body.email,
+        taxNumber: body.taxNumber,
+        phone: body.phone,
+        password: body.password,
+      });
+    });
+    return from(promise);
+  }
+  loginAsFarmerWithFB(body: logBody): Observable<UserCredential> {
     return from(
       signInWithEmailAndPassword(this.angularAuth, body.email, body.password)
     );
   }
-  logout(): Observable<void> {
-    this.userService.logout();
-    return from(signOut(this.angularAuth));
+  loginAsRetailerWithFB(body: logBody): Observable<UserCredential> {
+    return from(
+      signInWithEmailAndPassword(this.angularAuth, body.email, body.password)
+    );
   }
+  // logout(): Observable<void> {
+  //   this.farmerService.logout();
+  //   return from(signOut(this.angularAuth));
+  // }
 }

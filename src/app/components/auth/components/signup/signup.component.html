@@ -1,0 +1,40 @@
+<div class="body">
+  <div class="wrapper">
+    <div class="title-text" #loginText>
+      <div class="title login">Farmer</div>
+      <div class="title signup">Retailer</div>
+    </div>
+    <div class="form-container">
+      <div class="slide-controls">
+        <input type="radio" name="slide" id="login" checked />
+        <input type="radio" name="slide" id="signup" />
+        <label
+          for="login"
+          class="slide login"
+          (click)="
+            loginForm.style.marginLeft = '0%'; loginText.style.marginLeft = '0%'
+          "
+          >Farmer</label
+        >
+        <label
+          for="signup"
+          class="slide signup"
+          (click)="
+            loginForm.style.marginLeft = '-50%';
+            loginText.style.marginLeft = '-100%'
+          "
+          >Retailer</label
+        >
+        <div class="slider-tab"></div>
+      </div>
+      <div class="form-inner">
+        <form action="#" #loginForm class="login">
+ <app-farmer-sign-up></app-farmer-sign-up>
+        </form>
+        <form action="#" class="signup">
+<app-retailer-sign-up></app-retailer-sign-up>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

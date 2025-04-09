@@ -1,0 +1,69 @@
+<form #farmerSignUpForm="ngForm">
+  <div class="form">
+    <div class="field d-flex justify-content-center gap-3">
+      <input
+        [(ngModel)]="FarmerBody().fname"
+        name="fname"
+        type="text"
+        placeholder="First Name"
+        required
+      />
+      <input
+        [(ngModel)]="FarmerBody().lname"
+        name="lname"
+        type="text"
+        placeholder="Last Name"
+        required
+      />
+    </div>
+    <div class="field d-flex justify-content-center gap-3">
+      <input
+        [(ngModel)]="FarmerBody().personalID"
+        name="personalID"
+        maxlength="14"
+        minlength="14"
+        type="number"
+        placeholder="Personal ID"
+        required
+      />
+      <input
+        [(ngModel)]="FarmerBody().phone"
+        minlength="11"
+        maxlength="11"
+        name="phone"
+        type="number"
+        placeholder="phone"
+        required
+      />
+    </div>
+    <div class="field">
+      <input
+        [(ngModel)]="FarmerBody().email"
+        name="email"
+        type="email"
+        placeholder="Email Address"
+        required
+      />
+    </div>
+    <div class="field">
+      <input
+        [(ngModel)]="FarmerBody().password"
+        name="password"
+        type="password"
+        placeholder="Password"
+        required
+      />
+    </div>
+    <!-- <div class="pass-link"><a href="#">Forgot password?</a></div> -->
+    <div class="field btn">
+      <div class="btn-layer"></div>
+      <input
+        [disabled]="farmerSignUpForm.invalid"
+        type="submit"
+        (click)="signUp()"
+        value="Signup As Farmer"
+      />
+    </div>
+    <div class="signup-link">Not a member? <a href="">Login now</a></div>
+  </div>
+</form>

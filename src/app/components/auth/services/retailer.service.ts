@@ -16,7 +16,7 @@ import { environment } from '../../../../environment';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class RetailerService {
   private firestore = inject(Firestore);
   private http = inject(HttpClient);
   private snack = inject(SnackService);
@@ -55,15 +55,18 @@ export class UserService {
     }
     return user;
   }
-  addUserProfile(id: string, user: User) {
-    const ref = doc(this.firestore, 'users', id);
+
+  addRetailerProfile(id: string, user: any) {
+    console.log(id)
+    console.log(user);
+    const ref = doc(this.firestore, 'retailers', id);
     return from(setDoc(ref, user));
   }
-  updateUserProfile(id: string, user: User) {
-    console.log(id);
-    const ref = doc(this.firestore, 'users', id);
-    return from(updateDoc(ref, { ...user }));
-  }
+  // updateUserProfile(id: string, user: User) {
+  //   console.log(id);
+  //   const ref = doc(this.firestore, 'users', id);
+  //   return from(updateDoc(ref, { ...user }));
+  // }
   logout() {
     localStorage.clear();
   }
@@ -86,23 +89,23 @@ export class UserService {
     );
   }
 
-  updateProfileImageByFB(imgUrl: string) {
-    this.updateUserProfile(this.user()?.userId || '', {
-      ...this.user(),
-      picture: imgUrl,
-    }).subscribe(() => {
-      this.setUserFromFB(this.user()?.userId || '');
-      this.snack.success('Your Image Successfully Updated');
-    });
-  }
+  // updateProfileImageByFB(imgUrl: string) {
+  //   this.updateUserProfile(this.user()?.userId || '', {
+  //     ...this.user(),
+  //     picture: imgUrl,
+  //   }).subscribe(() => {
+  //     this.setUserFromFB(this.user()?.userId || '');
+  //     this.snack.success('Your Image Successfully Updated');
+  //   });
+  // }
 
-  updateProfileInfo(body: any) {
-    this.updateUserProfile(this.user()?.userId || '', {
-      ...this.user(),
-      ...body,
-    }).subscribe(() => {
-      this.setUserFromFB(this.user()?.userId || '');
-      this.snack.success('Your Information Successfully Updated');
-    });
-  }
+  // updateProfileInfo(body: any) {
+  //   this.updateUserProfile(this.user()?.userId || '', {
+  //     ...this.user(),
+  //     ...body,
+  //   }).subscribe(() => {
+  //     this.setUserFromFB(this.user()?.userId || '');
+  //     this.snack.success('Your Information Successfully Updated');
+  //   });
+  // }
 }
