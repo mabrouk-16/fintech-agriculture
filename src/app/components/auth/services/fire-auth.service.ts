@@ -9,10 +9,10 @@ import {
   user,
   UserCredential,
 } from '@angular/fire/auth';
-import { SnackService } from '../../../services/snack.service';
-import { logBody, regBody } from '../../../models/User';
+
 import { FarmerService } from './farmer.service';
 import { RetailerService } from './retailer.service';
+import { UserService } from './user.service';
 // import { Departments, logBody, regBody, UserRoles } from '../../../models/User';
 
 @Injectable({
@@ -20,6 +20,7 @@ import { RetailerService } from './retailer.service';
 })
 export class FireAuthService {
   private angularAuth = inject(Auth);
+  private userService = inject(UserService);
   private farmerService = inject(FarmerService);
   private retailerService = inject(RetailerService);
 
@@ -61,18 +62,13 @@ export class FireAuthService {
     });
     return from(promise);
   }
-  loginAsFarmerWithFB(body: logBody): Observable<UserCredential> {
+  login(body: any): Observable<UserCredential> {
     return from(
       signInWithEmailAndPassword(this.angularAuth, body.email, body.password)
     );
   }
-  loginAsRetailerWithFB(body: logBody): Observable<UserCredential> {
-    return from(
-      signInWithEmailAndPassword(this.angularAuth, body.email, body.password)
-    );
+  logout(): Observable<void> {
+    this.userService.logout();
+    return from(signOut(this.angularAuth));
   }
-  // logout(): Observable<void> {
-  //   this.farmerService.logout();
-  //   return from(signOut(this.angularAuth));
-  // }
 }

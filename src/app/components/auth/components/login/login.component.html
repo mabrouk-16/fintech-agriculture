@@ -1,0 +1,50 @@
+<div class="body">
+  <div class="wrapper">
+    <div class="title-text" #loginText>
+      <div class="title login" style="margin-bottom: 24px">Login</div>
+      <div class="title signup"></div>
+    </div>
+    <div class="form-container">
+      <div class="form-inner">
+        <form #loginForm #farmerLogForm="ngForm" class="login">
+          <div class="form">
+            <div class="field">
+              <input
+                [(ngModel)]="loginBody().email"
+                name="email"
+                type="email"
+                placeholder="Email Address"
+                required
+              />
+            </div>
+            <div class="field">
+              <input
+                [(ngModel)]="loginBody().password"
+                name="password"
+                type="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <!-- <div class="pass-link"><a href="#">Forgot password?</a></div> -->
+            <div class="field btn">
+              <div class="btn-layer"></div>
+              <input
+                [disabled]="farmerLogForm.invalid"
+                type="submit"
+                (click)="login()"
+                value="Login"
+              />
+            </div>
+            <div class="signup-link">
+              Not a member?
+              <a [routerLink]="[urlsNames.root, urlsNames.signUp]"
+                >Register now</a
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

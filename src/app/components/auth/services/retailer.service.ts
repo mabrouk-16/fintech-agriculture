@@ -8,10 +8,10 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
-import { User } from '../../../models/User';
 import { HttpClient } from '@angular/common/http';
 import { SnackService } from '../../../services/snack.service';
 import { environment } from '../../../../environment';
+import { FarmerModel, RetailerModel } from '../../../models/User';
 
 @Injectable({
   providedIn: 'root',
@@ -22,42 +22,42 @@ export class RetailerService {
   private snack = inject(SnackService);
 
   // private authService = inject(AuthApiService);
-  user: WritableSignal<User | null | undefined> = signal(null);
+  // user: WritableSignal<User | null | undefined> = signal(null);
   usersCollections!: CollectionReference;
 
   constructor() {
     // this.getUser()
   }
 
-  setUserFromFB(id: string) {
-    const ref = doc(this.firestore, 'users', id);
-    return from(getDoc(ref)).subscribe((res) => {
-      // console.log(res.data());
-      this.saveUser(res.data());
-      this.user.set({ ...res.data() });
-      console.log(this.user());
-    });
-  }
+  // setUserFromFB(id: string) {
+  //   const ref = doc(this.firestore, 'users', id);
+  //   return from(getDoc(ref)).subscribe((res) => {
+  //     // console.log(res.data());
+  //     this.saveUser(res.data());
+  //     this.user.set({ ...res.data() });
+  //     console.log(this.user());
+  //   });
+  // }
   getUserProfile(id: string) {
     const ref = doc(this.firestore, 'users', id);
     return from(getDoc(ref));
   }
 
-  saveUser(user: User | undefined) {
+  saveUser(user: FarmerModel | RetailerModel | undefined) {
     // this.user?.set(user);
     localStorage.setItem('user', JSON.stringify(user));
   }
-  getUser() {
-    const user = localStorage.getItem('user');
-    if (user) {
-      const currentUser = JSON.parse(user);
-      this.user?.set(currentUser);
-    }
-    return user;
-  }
+  // getUser() {
+  //   const user = localStorage.getItem('user');
+  //   if (user) {
+  //     const currentUser = JSON.parse(user);
+  //     this.user?.set(currentUser);
+  //   }
+  //   return user;
+  // }
 
   addRetailerProfile(id: string, user: any) {
-    console.log(id)
+    console.log(id);
     console.log(user);
     const ref = doc(this.firestore, 'retailers', id);
     return from(setDoc(ref, user));

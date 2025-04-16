@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../components/auth/services/farmer.service';
+import { UserService } from '../components/auth/services/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class authGuard {
     if (this.userService.getUser() || this.userService.user()) {
       return true;
     } else {
-      this.router.navigate(['/', 'auth']);
+      this.router.navigate(['/', 'login']);
       return false;
     }
   }

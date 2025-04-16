@@ -4,35 +4,36 @@ import { FireAuthService } from '../../services/fire-auth.service';
 import { SnackService } from '../../../../services/snack.service';
 import { Router, RouterLink } from '@angular/router';
 import { UrlsNames } from '../../../../models/shared';
+import { user } from '@angular/fire/auth';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-farmer-sign-up',
+  selector: 'app-login',
   standalone: true,
   imports: [FormsModule, RouterLink],
-  templateUrl: './farmer-sign-up.component.html',
-  styleUrl: './farmer-sign-up.component.scss',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss',
 })
-export class FarmerSignUpComponent {
+export class LoginComponent {
   private authService = inject(FireAuthService);
+  private userService = inject(UserService);
   private snack = inject(SnackService);
   private router = inject(Router);
-
-  FarmerBody = signal({
-    fname: null,
-    lname: null,
+  loginBody = signal({
     email: null,
-    personalID: null,
-    phone: null,
     password: null,
   });
+
   urlsNames = UrlsNames;
-  signUp() {
-    // console.log(this.FarmerBody());
-    this.authService.registerFarmerWithFB(this.FarmerBody()).subscribe({
+
+  login() {
+    console.log(this.loginBody());
+
+    this.authService.login(this.loginBody()).subscribe({
       next: (farmer) => {
-        console.log(farmer);
-        this.router.navigate([UrlsNames.root, UrlsNames.login]).then(() => {
-          this.snack.success('Farmer Created Successfully');
+        this.userService.saveUser(farmer.user);
+        this.router.navigate([UrlsNames.root, UrlsNames.home]).then(() => {
+          this.snack.success('LoggedIn Successfully');
         });
       },
       error: (err) => {

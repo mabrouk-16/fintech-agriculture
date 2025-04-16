@@ -64,6 +64,9 @@
         value="Signup As Farmer"
       />
     </div>
-    <div class="signup-link">Not a member? <a href="">Login now</a></div>
+    <div class="signup-link">
+      already a member?
+      <a [routerLink]="[urlsNames.root, urlsNames.login]">Login now</a>
+    </div>
   </div>
 </form>

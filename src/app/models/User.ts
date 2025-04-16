@@ -1,39 +1,37 @@
-export interface User {
-  userId?: string;
+
+export interface RetailerModel {
+  name?: string;
   email?: string;
-  emailVerified?: boolean;
-  userName?: string;
-  picture?: string | null;
-  title?: string | null;
-  birthDate?: string | null;
-  phone?: string | null;
-  address?: string | null;
-  gender?: string | null;
-  role?: UserRoles;
-  department?: Departments ;
-  createdAt?: string | null;
-  links?: UserLinks;
+  phone?: string;
+  password?: string;
+  img?: string;
+  companyName?: string;
+  taxNumber?: string;
+  type?: string;
+  taxImage?: string;
+  description?: string;
+  lon?: number;
+  lat?: number;
+}
+export interface FarmerModel {
+  profileImage?: string;
+  fname?: string;
+  lname?: string;
+  email?: string;
+  password?: string;
+  phone?: string;
+  personalID?: string;
+  farmImages?: string[]; // Assuming List<string>
+  farmName?: string;
+  farmServices?: string[]; // Assuming List<string>
+  farmState?: string;
+  farmCredentialImage?: string; // Corrected the typo "farmCredentilaImage"
+  latitude?: number;
+  longitude?: number;
 }
 export enum UserRoles {
   farmer = 'farmer',
   retailer = 'retailer',
-  super_admin = 'super_admin',
-}
-export enum Departments {
-  Cyber = 'Cyber',
-  Developers = 'Developers',
-  Marketing = 'Marketing',
-}
-export interface regBody {
-  userName: string;
-  email: string;
-  password: string;
-  birthDate?: string | null;
-  phone?: string | null;
-  address?: string | null;
-  gender?: string | null;
-  department?: Departments;
-  title?: string | null;
 }
 export interface logBody {
   email: string;
