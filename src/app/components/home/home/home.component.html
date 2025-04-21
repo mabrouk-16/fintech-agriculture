@@ -33,7 +33,11 @@
         {{ userService.retailer()?.name }}
         }
       </a>
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <ul
+        class="dropdown-menu end-0"
+        style="left: 80%"
+        aria-labelledby="navbarDropdown"
+      >
         <li><a class="dropdown-item" href="#">Profile</a></li>
         <li><hr class="dropdown-divider" /></li>
         <li><a class="dropdown-item" (click)="logOut()">Logout</a></li>
@@ -41,3 +45,14 @@
     </div>
   </div>
 </nav>
+<app-hero></app-hero>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="titlepage">
+        <h2>Latest Crops</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<app-crops></app-crops>

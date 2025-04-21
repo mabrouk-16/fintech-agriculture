@@ -39,13 +39,13 @@ export class UserService {
       .pipe(
         switchMap((res) => {
           res.forEach((doc) => {
-            console.log(doc.data());
+            // console.log(doc.data());
             if ((doc.data() as FarmerModel).email == email) {
               // this.saveUser(doc.data());
               this.user.set({ ...doc.data() });
               this.farmer.set({ ...doc.data() });
               this.saveUser(doc.data());
-              console.log(this.user());
+              // console.log(this.user());
               found = true;
             }
           });
@@ -57,12 +57,12 @@ export class UserService {
       .subscribe({
         next: (res) => {
           res.forEach((doc) => {
-            console.log(doc.data());
+            // console.log(doc.data());
             if ((doc.data() as RetailerModel).email == email) {
               this.saveUser(doc.data());
               this.retailer.set({ ...doc.data() });
               this.saveUser(doc.data());
-              console.log(this.user());
+              // console.log(this.user());
             }
           });
         },
@@ -83,7 +83,7 @@ export class UserService {
 
   saveUser(user: FarmerModel | RetailerModel | User | undefined) {
     // this.user?.set(user);
-    console.log(user);
+    // console.log(user);
     localStorage.setItem('user', JSON.stringify(user));
   }
   getUser() {
