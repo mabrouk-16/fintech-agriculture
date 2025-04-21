@@ -22,7 +22,7 @@ export class HomeComponent {
   urlsNames = UrlsNames;
   logOut() {
     this.fireAuth.logout().subscribe((res) => {
-      console.log(res)
+      // console.log(res)
       this.router.navigate(['/', 'login']);
     });
   }

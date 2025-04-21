@@ -27,7 +27,7 @@ export class LoginComponent {
   urlsNames = UrlsNames;
 
   login() {
-    console.log(this.loginBody());
+    // console.log(this.loginBody());
 
     this.authService.login(this.loginBody()).subscribe({
       next: (farmer) => {

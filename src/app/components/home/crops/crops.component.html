@@ -2,7 +2,7 @@
 <div id="footer-wrapper">
   <div class="12u">
     <div class="container">
-      <div class="row g-3">
+      <div class="row g-3 justify-content-center">
         @for (auction of auctions(); track $index) {
         <div class="col-6 col-lg-4 col-xl-3">
           <h2>{{ auction.crop.cropName }}</h2>
@@ -21,7 +21,7 @@
               Auction End: {{ auction.crop.end | date : "dd-MM-YYYY" }}
             </p>
             <p class="my-2">Price: {{ auction.crop.cropPrice }}</p>
-          <p><a href="#" class="button">More Details</a></p>
+          <p><a  class="button">More Details</a></p>
         </div>
         }
       </div>

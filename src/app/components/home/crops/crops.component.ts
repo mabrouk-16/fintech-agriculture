@@ -22,7 +22,7 @@ export class CropsComponent {
     this.cropService.getAllCrops().subscribe({
       next: (res) => {
         res.forEach((doc) => {
-          console.log(doc.data());
+          // console.log(doc.data());
 
           this.auctions().push(doc.data() as Auction);
         });
@@ -39,7 +39,7 @@ export class CropsComponent {
           });
           return [...arr];
         });
-        console.log(this.auctions());
+        // console.log(this.auctions());
       },
     });
   }

@@ -30,7 +30,7 @@ export class FarmerSignUpComponent {
     // console.log(this.FarmerBody());
     this.authService.registerFarmerWithFB(this.FarmerBody()).subscribe({
       next: (farmer) => {
-        console.log(farmer);
+        // console.log(farmer);
         this.router.navigate([UrlsNames.root, UrlsNames.login]).then(() => {
           this.snack.success('Farmer Created Successfully');
         });

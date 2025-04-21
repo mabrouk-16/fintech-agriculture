@@ -57,8 +57,8 @@ export class RetailerService {
   // }
 
   addRetailerProfile(id: string, user: any) {
-    console.log(id);
-    console.log(user);
+    // console.log(id);
+    // console.log(user);
     const ref = doc(this.firestore, 'retailers', id);
     return from(setDoc(ref, user));
   }

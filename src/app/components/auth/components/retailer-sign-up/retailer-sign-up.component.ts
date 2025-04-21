@@ -29,7 +29,7 @@ export class RetailerSignUpComponent {
     // console.log(this.retailerBody());
     this.authService.registerRetailerWithFB(this.retailerBody()).subscribe({
       next: (retailer) => {
-        console.log(retailer);
+        // console.log(retailer);
         this.router.navigate([UrlsNames.root, UrlsNames.login]).then(() => {
           this.snack.success('Retailer Created Successfully');
         });
