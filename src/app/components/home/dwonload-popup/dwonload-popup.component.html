@@ -1,0 +1,6 @@
+<div class="rounded-2 d-flex flex-column justify-content-center align-items-center bg-white p-4">
+  <div>
+    <qrcode [qrdata]="data" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+  <a class="text-center" [href]="data">Open Link</a>
+</div>

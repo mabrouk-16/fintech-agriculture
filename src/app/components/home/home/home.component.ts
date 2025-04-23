@@ -5,11 +5,12 @@ import { UrlsNames } from '../../../models/shared';
 import { FireAuthService } from '../../auth/services/fire-auth.service';
 import { CropsComponent } from "../crops/crops.component";
 import { HeroComponent } from "../hero/hero.component";
+import { SliderComponent } from "../slider/slider.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CropsComponent, HeroComponent],
+  imports: [CropsComponent, HeroComponent, SliderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
