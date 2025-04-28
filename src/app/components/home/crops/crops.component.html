@@ -12,16 +12,23 @@
             [src]="auction.crop.cropImages[0]"
             alt=""
           />
-          <p class="my-2">Quantity: {{ auction.crop.cropQuantity}}</p>
+          <p class="my-2">Quantity: {{ auction.crop.cropQuantity }}</p>
           <p class="my-2">Location: {{ auction.crop.croplocation }}</p>
           <p class="my-2">
-              Auction Start: {{ auction.crop.start | date : "dd-MM-YYYY" }}
+            Auction Start: {{ auction.crop.start | date : "dd-MM-YYYY" }}
           </p>
           <p class="my-2">
-              Auction End: {{ auction.crop.end | date : "dd-MM-YYYY" }}
-            </p>
-            <p class="my-2">Price: {{ auction.crop.cropPrice }}</p>
-          <p><a  class="button">More Details</a></p>
+            Auction End: {{ auction.crop.end | date : "dd-MM-YYYY" }}
+          </p>
+          <p class="my-2">Price: {{ auction.crop.cropPrice }}</p>
+          <p>
+            <a
+              style="cursor: pointer"
+              (click)="openPopup(auction)"
+              class="button"
+              >More Details</a
+            >
+          </p>
         </div>
         }
       </div>

@@ -5,8 +5,10 @@ import {
   Firestore,
   getDoc,
   setDoc,
-  updateDoc,
+  collection,
+  getDocs,
 } from '@angular/fire/firestore';
+import {} from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SnackService } from '../../../services/snack.service';
@@ -24,20 +26,28 @@ export class RetailerService {
   // private authService = inject(AuthApiService);
   // user: WritableSignal<User | null | undefined> = signal(null);
   usersCollections!: CollectionReference;
+  retailerList: WritableSignal<RetailerModel[]> = signal([]);
 
   constructor() {
     // this.getUser()
   }
+  getRetailerProfile(id: string) {
+    const ref = doc(this.firestore, 'retailers', id);
+   return from(getDoc(ref))
+  }
+  getAllRetailers() {
+    from(getDocs(collection(this.firestore, 'retailers'))).subscribe({
+      next: (res) => {
+        res.forEach((doc) => {
+          if (doc.data() as RetailerModel) {
+            this.retailerList().push({ ...doc.data() });
+          }
+        });
+        // console.log(this.retailerList());
+      },
+    });
+  }
 
-  // setUserFromFB(id: string) {
-  //   const ref = doc(this.firestore, 'users', id);
-  //   return from(getDoc(ref)).subscribe((res) => {
-  //     // console.log(res.data());
-  //     this.saveUser(res.data());
-  //     this.user.set({ ...res.data() });
-  //     console.log(this.user());
-  //   });
-  // }
   getUserProfile(id: string) {
     const ref = doc(this.firestore, 'users', id);
     return from(getDoc(ref));

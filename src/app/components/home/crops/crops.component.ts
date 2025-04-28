@@ -3,6 +3,10 @@ import { CropsService } from '../../../services/crops.service';
 import { Auction } from '../../../models/crops';
 import { DatePipe } from '@angular/common';
 import { Timestamp } from '@angular/fire/firestore';
+import { RetailerService } from '../../auth/services/retailer.service';
+import { RetailerModel } from '../../../models/User';
+import { MatDialog } from '@angular/material/dialog';
+import { CropPopupComponent } from './crop-popup/crop-popup.component';
 
 @Component({
   selector: 'app-crops',
@@ -14,7 +18,7 @@ import { Timestamp } from '@angular/fire/firestore';
 export class CropsComponent {
   cropService = inject(CropsService);
   auctions = signal<Auction[]>([]);
-
+  dilog = inject(MatDialog);
   constructor() {
     this.getAllAuctions();
   }
@@ -42,5 +46,11 @@ export class CropsComponent {
         // console.log(this.auctions());
       },
     });
+  }
+  openPopup(auction: Auction) {
+    this.dilog.open(CropPopupComponent, {
+      data: auction,
+      maxWidth: '456px',
+    })
   }
 }
