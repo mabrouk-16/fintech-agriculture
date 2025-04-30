@@ -7,11 +7,12 @@ import { CropsComponent } from "../crops/crops.component";
 import { HeroComponent } from "../hero/hero.component";
 import { SliderComponent } from "../slider/slider.component";
 import { RetailerService } from '../../auth/services/retailer.service';
+import { ContactUsComponent } from "../contact-us/contact-us.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CropsComponent, HeroComponent, SliderComponent],
+  imports: [CropsComponent, HeroComponent, SliderComponent, ContactUsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

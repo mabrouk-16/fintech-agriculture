@@ -1,0 +1,121 @@
+<footer id="contact">
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="titlepage">
+            <h2>Contact Us</h2>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <form id="request" class="main_form">
+            <div class="row">
+              <div class="col-md-4">
+                <input
+                  class="contactus"
+                  placeholder="Full Name"
+                  type="type"
+                  name="Full Name"
+                  [(ngModel)]="feedback().name"
+                />
+              </div>
+              <div class="col-md-4">
+                <input
+                  class="contactus"
+                  placeholder="Email"
+                  type="type"
+                  name="Email"
+                  [(ngModel)]="feedback().email"
+                />
+              </div>
+              <div class="col-md-4">
+                <input
+                  class="contactus"
+                  placeholder="Phone Number"
+                  type="type"
+                  name="Phone Number"
+                  [(ngModel)]="feedback().phone"
+                />
+              </div>
+              <!-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                              <ul class="social_icon">
+                                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                              </ul>
+                           </div> -->
+              <div class="col-md-8">
+                <textarea
+                  class="contactus1"
+                  placeholder="Message"
+                  type="type"
+                  name="message"
+                  [(ngModel)]="feedback().message"
+                >
+                </textarea>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <button class="send_btn" (click)="send()">Send</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- <div class="col-md-3 border_right">
+                     <ul class="location_icon">
+                        <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a> Locatins</li>
+                        <li><a href="#"><i class="fa fa-volume-control-phone" aria-hidden="true"></i></a> +71 9087654321</li>
+                        <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>demogmail.com</li>
+                     </ul>
+                  </div> -->
+        <div class="col-md-4 border_right">
+          <h3>Useful Link</h3>
+          <ul class="link">
+            <li>
+              <a
+                href="https://drive.google.com/file/d/1m3qN4LaCtn2j5n31TwnAQ5t__wO0lM43/view?usp=drive_link"
+                >Farmer App</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://drive.google.com/file/d/13VVgfcS_Lj8OH_gYI7bMwv-ERKUN30T-/view?usp=drive_link"
+                >Retailer App</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 border_right">
+          <h3>Menus</h3>
+          <ul class="link">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Crops</a></li>
+            <li><a href="">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <form class="bottom_form">
+            <h3>Newsletter</h3>
+            <input
+              class="enter"
+              placeholder="Enter your email"
+              type="text"
+              name="Enter your email"
+            />
+            <button class="sub_btn">subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p>Copyright 2025 All Right Reserved By FinTech Agriculture</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
