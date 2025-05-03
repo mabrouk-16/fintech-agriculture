@@ -30,4 +30,12 @@ export const routes: Routes = [
       ),
       canActivate:[authGuard]
   },
+  {
+    path: `${UrlsNames.profile}`,
+    loadComponent: () =>
+      import('./components/profile/profile.component').then(
+        (m) => m.ProfileComponent
+      ),
+      canActivate:[authGuard]
+  },
 ];

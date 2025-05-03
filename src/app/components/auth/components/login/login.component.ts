@@ -31,6 +31,7 @@ export class LoginComponent {
 
     this.authService.login(this.loginBody()).subscribe({
       next: (farmer) => {
+        console.log(farmer)
         this.userService.saveUser(farmer.user);
         this.router.navigate([UrlsNames.root, UrlsNames.home]).then(() => {
           this.snack.success('LoggedIn Successfully');

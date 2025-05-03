@@ -45,7 +45,7 @@ export class UserService {
               this.user.set({ ...doc.data() });
               this.farmer.set({ ...doc.data() });
               this.saveUser(doc.data());
-              // console.log(this.user());
+              console.log(this.user());
               found = true;
             }
           });
@@ -60,6 +60,7 @@ export class UserService {
             // console.log(doc.data());
             if ((doc.data() as RetailerModel).email == email) {
               this.saveUser(doc.data());
+              this.user.set({ ...doc.data() });
               this.retailer.set({ ...doc.data() });
               this.saveUser(doc.data());
               // console.log(this.user());
