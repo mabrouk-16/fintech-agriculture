@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UrlsNames } from '../../models/shared';
 import { FireAuthService } from '../auth/services/fire-auth.service';
@@ -25,8 +30,9 @@ export class NavbarComponent {
   logOut() {
     this.fireAuth.logout().subscribe((res) => {
       // console.log(res)
-      location.reload();
-      this.router.navigate(['/']);
+      this.router.navigate(['/', this.urlsNames.home]).then(() => {
+        location.reload();
+      });
     });
   }
 }
