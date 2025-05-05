@@ -1,9 +1,9 @@
 export enum UrlsNames {
   root = '/',
-  auth = 'auth',
+  // auth = 'auth',
   home = 'home',
-  login = 'login',
-  signUp = 'signup',
+  // login = 'login',
+  // signUp = 'signup',
   dashboard = 'dashboard',
   department = 'department',
   profile = 'profile',

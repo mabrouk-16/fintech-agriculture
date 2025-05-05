@@ -19,6 +19,7 @@
         </li>
         <li class="nav-item dropdown float-end"></li>
       </ul>
+      @if (userService.farmer()|| userService.retailer()) {
       <a
         class="nav-link dropdown-toggle"
         id="navbarDropdown"
@@ -26,9 +27,9 @@
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        Welcome, @if (userService.farmer()) {
-        {{ userService.farmer()?.fname }} {{ userService.farmer()?.lname }}
-        }@else {
+        @if (userService.farmer()) { Welcome, {{ userService.farmer()?.fname }}
+        {{ userService.farmer()?.lname }} }@else if (userService.retailer()) {
+        Welcome,
         {{ userService.retailer()?.name }}
         }
       </a>
@@ -47,6 +48,13 @@
         <li><hr class="dropdown-divider" /></li>
         <li><a class="dropdown-item" (click)="logOut()">Logout</a></li>
       </ul>
+      }@else {<button
+        class="btn btn-primary"
+        (click)="userService.openLoginPopup()"
+      >
+        Login
+      </button>
+      }
     </div>
   </div>
 </nav>

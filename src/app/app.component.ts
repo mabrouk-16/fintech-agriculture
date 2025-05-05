@@ -5,11 +5,12 @@ import { RouterOutlet } from '@angular/router';
 import { of } from 'rxjs';
 import { FireAuthService } from './components/auth/services/fire-auth.service';
 import { UserService } from './components/auth/services/user.service';
+import { NavbarComponent } from "./components/navbar/navbar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

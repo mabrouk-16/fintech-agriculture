@@ -13,6 +13,8 @@ import { SnackService } from '../../../services/snack.service';
 import { environment } from '../../../../environment';
 import { FarmerModel, RetailerModel } from '../../../models/User';
 import { User } from '@angular/fire/auth';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../components/login/login.component';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +23,7 @@ export class UserService {
   private firestore = inject(Firestore);
   private http = inject(HttpClient);
   private snack = inject(SnackService);
+  dilog = inject(MatDialog);
 
   // private authService = inject(AuthApiService);
   user: WritableSignal<FarmerModel | RetailerModel | null | undefined> =
@@ -68,14 +71,11 @@ export class UserService {
           });
         },
       });
-    // }
-    // const ref = doc(this.firestore, 'users', id);
-    // return from(getDoc(ref)).subscribe((res) => {
-    //   // console.log(res.data());
-    //   this.saveUser(res.data());
-    //   this.user.set({ ...res.data() });
-    //   console.log(this.user());
-    // });
+  }
+  openLoginPopup() {
+    this.dilog.open(LoginComponent, {
+      maxWidth: '456px',
+    });
   }
   getUserProfile(id: string) {
     const ref = doc(this.firestore, 'farmers', id);
@@ -95,15 +95,7 @@ export class UserService {
     }
     return user;
   }
-  // addUserProfile(id: string, user: User) {
-  //   const ref = doc(this.firestore, 'users', id);
-  //   return from(setDoc(ref, user));
-  // }
-  // updateUserProfile(id: string, user: User) {
-  //   console.log(id);
-  //   const ref = doc(this.firestore, 'users', id);
-  //   return from(updateDoc(ref, { ...user }));
-  // }
+
   logout() {
     this.user.set(null);
     localStorage.removeItem('user');

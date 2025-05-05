@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UrlsNames } from '../../../../models/shared';
 import { user } from '@angular/fire/auth';
 import { UserService } from '../../services/user.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginComponent {
   private authService = inject(FireAuthService);
+  private dialog = inject(MatDialogRef<LoginComponent>);
   private userService = inject(UserService);
   private snack = inject(SnackService);
   private router = inject(Router);
@@ -33,9 +35,10 @@ export class LoginComponent {
       next: (farmer) => {
         console.log(farmer)
         this.userService.saveUser(farmer.user);
-        this.router.navigate([UrlsNames.root, UrlsNames.home]).then(() => {
+        this.dialog.close();
+        // this.router.navigate([UrlsNames.root, UrlsNames.home]).then(() => {
           this.snack.success('LoggedIn Successfully');
-        });
+        // });
       },
       error: (err) => {
         this.snack.success(err.message);

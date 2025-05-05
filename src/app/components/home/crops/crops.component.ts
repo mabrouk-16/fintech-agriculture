@@ -7,6 +7,7 @@ import { RetailerService } from '../../auth/services/retailer.service';
 import { RetailerModel } from '../../../models/User';
 import { MatDialog } from '@angular/material/dialog';
 import { CropPopupComponent } from './crop-popup/crop-popup.component';
+import { UserService } from '../../auth/services/user.service';
 
 @Component({
   selector: 'app-crops',
@@ -17,6 +18,7 @@ import { CropPopupComponent } from './crop-popup/crop-popup.component';
 })
 export class CropsComponent {
   cropService = inject(CropsService);
+  userService = inject(UserService);
   auctions = signal<Auction[]>([]);
   dilog = inject(MatDialog);
   constructor() {
@@ -48,9 +50,13 @@ export class CropsComponent {
     });
   }
   openPopup(auction: Auction) {
-    this.dilog.open(CropPopupComponent, {
-      data: auction,
-      maxWidth: '456px',
-    })
+    if (this.userService.user()?.email) {
+      this.dilog.open(CropPopupComponent, {
+        data: auction,
+        maxWidth: '456px',
+      });
+    } else {
+      this.userService.openLoginPopup();
+    }
   }
 }
