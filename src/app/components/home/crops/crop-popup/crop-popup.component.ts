@@ -18,7 +18,7 @@ export class CropPopupComponent {
   public data: Auction = inject(MAT_DIALOG_DATA);
   retailer = signal<RetailerModel | undefined>(undefined);
   constructor() {
-    console.log(this.data);
+    // console.log(this.data);
     this.getRetailer();
   }
   getRetailer() {

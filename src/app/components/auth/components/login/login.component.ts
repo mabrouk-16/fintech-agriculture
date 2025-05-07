@@ -33,7 +33,7 @@ export class LoginComponent {
 
     this.authService.login(this.loginBody()).subscribe({
       next: (farmer) => {
-        console.log(farmer)
+        // console.log(farmer)
         this.userService.saveUser(farmer.user);
         this.dialog.close();
         // this.router.navigate([UrlsNames.root, UrlsNames.home]).then(() => {

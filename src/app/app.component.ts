@@ -22,7 +22,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.FireAuth.user$.subscribe((user) => {
       if (user?.email) {
-        console.log(user)
+        // console.log(user)
         this.userService.setUserFromFB(user.email);
       } else this.FireAuth.currentUser$.pipe(() => of(null));
     });

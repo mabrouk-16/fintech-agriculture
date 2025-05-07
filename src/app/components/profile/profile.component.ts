@@ -30,7 +30,7 @@ export class ProfileComponent {
       }).addTo(map);
 
       if (this.userService.farmer()?.email) {
-        console.log(this.userService.farmer());
+        // console.log(this.userService.farmer());
 
         L.marker([
           this.userService.farmer()?.latitude || 0,
@@ -47,7 +47,7 @@ export class ProfileComponent {
           .addTo(map)
           .bindPopup('Your Location')
           .openPopup();
-        console.log(this.userService.retailer());
+        // console.log(this.userService.retailer());
       }
     }, 2000);
   }
